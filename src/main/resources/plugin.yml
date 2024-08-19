@@ -1,0 +1,7 @@
+name: Heracles
+version: 1.0 # 수정 가능
+main: kr.vanilage.main.Main
+api-version: '1.21' # 수정 가능
+
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib:2.0.0 # Kotlin 버전을 수정하세요.
