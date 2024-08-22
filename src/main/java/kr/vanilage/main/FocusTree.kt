@@ -27,4 +27,32 @@ class FocusTree {
     fun exclusive(exclusive : Array<String>) {
         this.exclusive.add(exclusive)
     }
+
+    fun isFocusAvailable(nation : Nation, focus : String) : Boolean {
+        if (nation.focusCompleted.contains(focus)) return false // if already completed it
+
+        if (antecedentAnd[focus] != null) {
+            val array = antecedentAnd[focus]!!
+
+            for (i in array) {
+                if (!nation.focusCompleted.contains(i)) return false
+            }
+
+            return true
+        }
+
+        if (antecedentOr[focus] != null) {
+            val array = antecedentOr[focus]!!
+
+            for (i in array) {
+                if (nation.focusCompleted.contains(i)) return true
+            }
+
+            return false
+        }
+
+        TODO("EXCLUSIVE")
+
+        return true
+    }
 }

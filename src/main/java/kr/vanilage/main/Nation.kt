@@ -14,5 +14,5 @@ interface Nation {
 
     val focusTree : FocusTree
 
-    val focusCleared : ArrayList<String>
+    val focusCompleted : ArrayList<String>
 }
