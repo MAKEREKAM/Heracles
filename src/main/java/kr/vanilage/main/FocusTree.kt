@@ -51,7 +51,13 @@ class FocusTree {
             return false
         }
 
-        TODO("EXCLUSIVE")
+        exclusive.forEach { array ->
+            if (array.contains(focus)) {
+                array.forEach {
+                    if (nation.focusCompleted.contains(it)) return false
+                }
+            }
+        }
 
         return true
     }
