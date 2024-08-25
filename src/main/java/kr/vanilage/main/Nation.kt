@@ -8,7 +8,7 @@ interface Nation {
     val nationCode : String
     val description : String
 
-    val ideology : Ideology
+    val ideology : IdeologyType
 
     val playerId : UUID
 

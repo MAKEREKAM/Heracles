@@ -1,6 +1,6 @@
 package kr.vanilage.main
 
-enum class Ideology {
+enum class IdeologyType {
     DEMOCRACY,
     COMMUNISM,
     FASCISM
