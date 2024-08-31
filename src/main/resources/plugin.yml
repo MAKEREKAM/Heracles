@@ -5,3 +5,4 @@ api-version: '1.21' # 수정 가능
 
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:2.0.0 # Kotlin 버전을 수정하세요.
+  - net.dv8tion:JDA:5.1.0
