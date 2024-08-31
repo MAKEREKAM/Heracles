@@ -1,4 +1,4 @@
-package kr.vanilage.main
+package kr.vanilage.main.nation
 
 import java.util.UUID
 
