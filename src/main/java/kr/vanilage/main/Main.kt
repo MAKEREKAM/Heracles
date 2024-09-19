@@ -1,6 +1,7 @@
 package kr.vanilage.main
 
 import kr.vanilage.main.discord.Bot
+import kr.vanilage.main.discord.ConnectDiscord
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.java.JavaPlugin
@@ -20,5 +21,12 @@ class Main : JavaPlugin() {
         configuration = this.config
 
         Bot.run()
+
+        registerEvents()
+    }
+
+    private fun registerEvents() {
+        // Discord
+        Bukkit.getPluginManager().registerEvents(ConnectDiscord(), this)
     }
 }

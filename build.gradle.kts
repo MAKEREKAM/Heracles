@@ -17,6 +17,7 @@ dependencies {
     implementation(kotlin("reflect"))
     compileOnly("io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT"); // 여기 버전을 바꿀수 있습니다.
     implementation("net.dv8tion:JDA:5.1.0")
+    implementation("club.minnced:discord-webhooks:0.8.4")
 }
 
 task("copy") {

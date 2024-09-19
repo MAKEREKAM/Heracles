@@ -1,10 +1,13 @@
 package kr.vanilage.main.discord
 
+import club.minnced.discord.webhook.WebhookClient
+import club.minnced.discord.webhook.WebhookClientBuilder
 import kr.vanilage.main.Main
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
+import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.commands.OptionMapping
 import net.dv8tion.jda.api.interactions.commands.OptionType
@@ -25,7 +28,8 @@ object Bot {
             jda = JDABuilder.createDefault(token)
                 .addEventListeners(
                     MessageListener(),
-                    SlashCommandListener()
+                    SlashCommandListener(),
+                    EnableListener()
                 )
                 .build()
 
@@ -56,7 +60,13 @@ class SlashCommandListener : ListenerAdapter() {
 }
 
 class MessageListener : ListenerAdapter() {
-    override fun onMessageReceived(event: MessageReceivedEvent) {
+    override fun onMessageReceived(event : MessageReceivedEvent) {
         if (!event.author.isBot && event.channel.id == Bot.channelId) event.channel.sendMessage("asdf").queue()
+    }
+}
+
+class EnableListener : ListenerAdapter() {
+    override fun onReady(event : ReadyEvent) {
+        event.jda.getTextChannelById(Bot.adminChannelId)!!.sendMessage("## SERVER OPEN.").queue()
     }
 }
