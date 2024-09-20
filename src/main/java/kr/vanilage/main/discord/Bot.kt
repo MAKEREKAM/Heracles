@@ -27,8 +27,6 @@ object Bot {
 
             jda = JDABuilder.createDefault(token)
                 .addEventListeners(
-                    MessageListener(),
-                    SlashCommandListener(),
                     EnableListener()
                 )
                 .build()
@@ -45,23 +43,6 @@ object Bot {
         catch (e : Exception) {
             e.printStackTrace()
         }
-    }
-}
-
-class SlashCommandListener : ListenerAdapter() {
-    override fun onSlashCommandInteraction(event : SlashCommandInteractionEvent) {
-        when (event.name) {
-            "say" -> {
-                val content = event.getOption("content", OptionMapping::getAsString)
-                event.channel.sendMessage(content!!).queue()
-            }
-        }
-    }
-}
-
-class MessageListener : ListenerAdapter() {
-    override fun onMessageReceived(event : MessageReceivedEvent) {
-        if (!event.author.isBot && event.channel.id == Bot.channelId) event.channel.sendMessage("asdf").queue()
     }
 }
 
