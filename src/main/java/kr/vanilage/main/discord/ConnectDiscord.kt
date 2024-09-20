@@ -27,7 +27,7 @@ class ConnectDiscord : Listener {
 
         val message = WebhookMessageBuilder()
             .setUsername(e.player.name)
-            .setAvatarUrl("https://minotar.net/helm/${e.player.name}")
+            .setAvatarUrl("https://cravatar.eu/helmhead/${e.player.name}/600.png")
             .setContent(e.message)
             .build()
 
