@@ -5,3 +5,14 @@ BOT_TOKEN: "여기에 디스코드 봇 토큰을 입력하세요. 본 프로그�
 CHANNEL_ID: "여기에 게임 진행 상황을 표시할 채널의 ID를 입력하세요. 본 프로그램은 채널 ID를 악용하지 않습니다."
 ADMIN_CHANNEL_ID: "여기에 로그 등의 기능을 사용할 관리용 채널의 ID를 입력하세요. 본 프로그램은 채널 ID를 악용하지 않습니다."
 WEBHOOK_URL: "여기에 채널에 메시지를 보낼 웹후크의 URL을 입력하세요. 본 프로그램은 웹후크를 악용하지 않습니다."
+
+MINECRAFT_MESSAGE_FORMAT: "여기에 디스코드 연동 채널에 올라온 메시지가 마인크래프트로 전송될 때의 형식을 입력해 주십시오."
+
+# $author : 메시지를 보낸 계정의 닉네임
+# $username : 메시지를 보낸 계정의 유저네임
+# $id : 메시지를 보낸 계정의 ID
+# $time : 메시지를 보낸 시간 (형식: yyyy-mm-dd hh:mm:ss)
+# $content : 메시지의 내용
+# 나머지는 MiniMessage(https://docs.advntr.dev/minimessage/index.html)의 문법을 따릅니다.
+
+# Ex) <bold><blue>DISCORD<reset> <green>$author<reset> : <yellow>$content <gray>($time)
