@@ -1,5 +1,9 @@
 package kr.vanilage.main
 
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import kr.vanilage.main.discord.Bot
 import kr.vanilage.main.discord.ConnectDiscord
 import org.bukkit.Bukkit
@@ -23,6 +27,14 @@ class Main : JavaPlugin() {
         Bot.run()
 
         registerEvents()
+
+//        embeddedServer(Netty, port = 8080) {
+//            routing {
+//                get("/") {
+//                    call.respondText("Hello, world!")
+//                }
+//            }
+//        }.start(wait = true)
     }
 
     private fun registerEvents() {
