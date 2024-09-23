@@ -28,13 +28,13 @@ class Main : JavaPlugin() {
 
         registerEvents()
 
-//        embeddedServer(Netty, port = 8080) {
-//            routing {
-//                get("/") {
-//                    call.respondText("Hello, world!")
-//                }
-//            }
-//        }.start(wait = true)
+        embeddedServer(Netty, port = 8080) {
+            routing {
+                get("/") {
+                    call.respondText("Hello, world!")
+                }
+            }
+        }.start(wait = false)
     }
 
     private fun registerEvents() {
