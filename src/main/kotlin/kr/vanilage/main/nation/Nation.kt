@@ -10,7 +10,7 @@ interface Nation {
 
     val ideology : IdeologyType
 
-    val playerId : UUID
+    val playerId : ArrayList<UUID>
 
     val focusTree : FocusTree
 
