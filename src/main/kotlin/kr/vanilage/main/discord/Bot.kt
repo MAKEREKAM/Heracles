@@ -1,8 +1,10 @@
 package kr.vanilage.main.discord
 
 import kr.vanilage.main.Main
+import kr.vanilage.main.discord.Authorization.Companion.authNumber
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.entities.channel.ChannelType
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
@@ -12,7 +14,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.Bukkit
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 object Bot {
     private lateinit var token : String
@@ -33,9 +35,10 @@ object Bot {
             jda = JDABuilder.createDefault(token)
                 .addEventListeners(
                     EnableListener(),
-                    MessageListener()
+                    MessageListener(),
+                    DirectMessageListener()
                 )
-                .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                .enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.DIRECT_MESSAGES)
                 .build()
 
             val commands = jda.updateCommands()
@@ -82,5 +85,42 @@ class MessageListener : ListenerAdapter() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
         return dateFormat.format(Date())
+    }
+}
+
+class DirectMessageListener : ListenerAdapter() {
+    override fun onMessageReceived(event : MessageReceivedEvent) {
+        if (event.isFromType(ChannelType.PRIVATE)) {
+            val content = event.message.contentDisplay
+
+            if (authNumber.containsKey(content)) {
+                for (i in Main.configuration.getConfigurationSection("AUTH")!!.getKeys(false)) {
+                    if (Main.configuration.getString("AUTH.${i}") == event.author.id) {
+                        event.channel.sendMessage(
+                            "이미 해당 디스코드 계정과 연결된 마인크래프트 계정이 존재합니다."
+                        ).queue()
+
+                        return
+                    }
+                }
+
+                if (Main.configuration.getString("AUTH.${authNumber[content]!!.uniqueId}") != null) {
+                    event.channel.sendMessage(
+                        "이미 해당 마인크래프트 계정이 연결되어 있습니다."
+                    ).queue()
+
+                    return
+                }
+
+                Main.configuration.set("AUTH.${authNumber[content]!!.uniqueId}", event.author.id)
+                Main.instance.saveConfig()
+
+                event.channel.sendMessage(
+                    "마인크래프트 계정 ${authNumber[content]!!.name}(${authNumber[content]!!.uniqueId})와 연동이 완료되었습니다."
+                ).queue()
+
+                authNumber.remove(content)
+            }
+        }
     }
 }

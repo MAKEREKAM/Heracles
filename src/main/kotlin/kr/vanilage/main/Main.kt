@@ -4,6 +4,7 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import kr.vanilage.main.discord.Authorization
 import kr.vanilage.main.discord.Bot
 import kr.vanilage.main.discord.ConnectDiscord
 import org.bukkit.Bukkit
@@ -40,5 +41,8 @@ class Main : JavaPlugin() {
     private fun registerEvents() {
         // Discord
         Bukkit.getPluginManager().registerEvents(ConnectDiscord(), this)
+
+        // Authorization
+        Bukkit.getPluginManager().registerEvents(Authorization(), this)
     }
 }

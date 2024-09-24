@@ -16,3 +16,7 @@ MINECRAFT_MESSAGE_FORMAT: "여기에 디스코드 연동 채널에 올라온 메
 # 나머지는 MiniMessage(https://docs.advntr.dev/minimessage/index.html)의 문법을 따릅니다.
 
 # Ex) <bold><blue>DISCORD<reset> <green>$author<reset> : <yellow>$content <gray>($time)
+
+# 디스코드 인증
+# 꼭 필요하지 않다면, 수정하지 마십시오.
+AUTH:
