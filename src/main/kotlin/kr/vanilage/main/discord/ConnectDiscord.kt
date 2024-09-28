@@ -50,7 +50,7 @@ class ConnectDiscord : Listener {
     fun onEnable(e : PluginEnableEvent) {
         val message = WebhookMessageBuilder()
             .setUsername("서버가 시작되었습니다.")
-            .setAvatarUrl("https://media.discordapp.net/attachments/1280076410081251419/1282197255335444542/image.png")
+            .setAvatarUrl("https://cdn.discordapp.com/attachments/1135441177013911662/1289155064925130804/image.png")
             .setContent("­")
             .build()
 
@@ -61,7 +61,7 @@ class ConnectDiscord : Listener {
     fun onDisable(e : PluginDisableEvent) {
         val message = WebhookMessageBuilder()
             .setUsername("서버가 종료되었습니다.")
-            .setAvatarUrl("https://media.discordapp.net/attachments/1280076410081251419/1282197255335444542/image.png")
+            .setAvatarUrl("https://cdn.discordapp.com/attachments/1135441177013911662/1289155064925130804/image.png")
             .setContent("­")
             .build()
 
