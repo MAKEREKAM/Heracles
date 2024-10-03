@@ -94,13 +94,15 @@ class DirectMessageListener : ListenerAdapter() {
             val content = event.message.contentDisplay
 
             if (authNumber.containsKey(content)) {
-                for (i in Main.configuration.getConfigurationSection("AUTH")!!.getKeys(false)) {
-                    if (Main.configuration.getString("AUTH.${i}") == event.author.id) {
-                        event.channel.sendMessage(
-                            "이미 해당 디스코드 계정과 연결된 마인크래프트 계정이 존재합니다."
-                        ).queue()
+                if (Main.configuration.getConfigurationSection("AUTH") != null) {
+                    for (i in Main.configuration.getConfigurationSection("AUTH")!!.getKeys(false)) {
+                        if (Main.configuration.getString("AUTH.${i}") == event.author.id) {
+                            event.channel.sendMessage(
+                                "이미 해당 디스코드 계정과 연결된 마인크래프트 계정이 존재합니다."
+                            ).queue()
 
-                        return
+                            return
+                        }
                     }
                 }
 
