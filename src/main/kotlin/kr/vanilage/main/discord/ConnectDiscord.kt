@@ -26,6 +26,8 @@ class ConnectDiscord : Listener {
 
     @EventHandler
     fun onJoin(e : PlayerJoinEvent) {
+        if (Main.configuration.getString("AUTH.${e.player.uniqueId}") == null) return
+
         val message = WebhookMessageBuilder()
             .setUsername("${e.player.name} 님이 접속하셨습니다.")
             .setAvatarUrl("https://cravatar.eu/helmhead/${e.player.name}/600.png")
@@ -37,6 +39,8 @@ class ConnectDiscord : Listener {
 
     @EventHandler
     fun onQuit(e : PlayerQuitEvent) {
+        if (Main.configuration.getString("AUTH.${e.player.uniqueId}") == null) return
+
         val message = WebhookMessageBuilder()
             .setUsername("${e.player.name} 님이 퇴장하셨습니다.")
             .setAvatarUrl("https://cravatar.eu/helmhead/${e.player.name}/600.png")
