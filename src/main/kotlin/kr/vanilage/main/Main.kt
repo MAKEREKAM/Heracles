@@ -10,6 +10,9 @@ import kr.vanilage.main.discord.ConnectDiscord
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.java.JavaPlugin
+import java.io.ByteArrayInputStream
+import java.io.ObjectInputStream
+import java.util.Base64
 
 class Main : JavaPlugin() {
     companion object {
